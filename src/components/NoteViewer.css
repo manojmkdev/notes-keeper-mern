@@ -1,0 +1,176 @@
+.viewer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.viewer-modal {
+  background: #ffffff;
+  width: 95%;
+  max-width: 1000px;
+  height: 90vh;
+  max-height: 90vh;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+.viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px 16px 28px;
+}
+
+.viewer-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.viewer-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.viewer-edit-btn {
+  background: #5c4ee5;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.viewer-edit-btn:hover {
+  background: #4a3ecf;
+}
+
+.viewer-close-btn {
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.viewer-close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #111827;
+}
+
+.viewer-meta {
+  padding: 0 28px 20px 28px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.viewer-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.viewer-meta-label {
+  color: #6b7280;
+  font-weight: 500;
+  min-width: 90px;
+}
+
+.viewer-notebook-badge {
+  background: #ede9fe;
+  color: #5c4ee5;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.viewer-tags-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.viewer-tag-badge {
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+}
+
+.viewer-date {
+  color: #4b5563;
+}
+
+.viewer-body {
+  flex: 1;
+  padding: 28px;
+  overflow-y: auto;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #374151;
+}
+
+/* Override quill Snow default styles inside view modal */
+.viewer-body.ql-editor {
+  height: auto;
+  min-height: auto;
+  padding: 24px 28px;
+}
+
+.viewer-body.ql-editor p {
+  margin-bottom: 12px;
+}
+
+@media (max-width: 767px) {
+  .viewer-overlay {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .viewer-modal {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+  .viewer-header {
+    padding: 16px 20px;
+  }
+  .viewer-title {
+    font-size: 18px;
+  }
+  .viewer-meta {
+    padding: 0 20px 16px 20px;
+  }
+  .viewer-body.ql-editor {
+    padding: 16px 20px;
+  }
+}

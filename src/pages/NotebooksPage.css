@@ -1,0 +1,241 @@
+.notebooks-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+.notebooks-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.5px;
+}
+
+.notebooks-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 24px 0;
+}
+
+.notebook-create-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.notebook-input.form-control {
+  flex: 1;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  color: #111827;
+  background: #ffffff;
+  padding: 0 16px;
+  transition: all 0.15s ease-in-out;
+}
+
+.notebook-input.form-control:focus {
+  border-color: #5c4ee5;
+  box-shadow: 0 0 0 3px rgba(92, 78, 229, 0.1);
+  outline: none;
+}
+
+.notebook-create-btn {
+  height: 42px;
+  padding: 0 24px;
+  background: #5c4ee5;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.notebook-create-btn:hover {
+  background: #4a3ecf;
+}
+
+.notebooks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.notebook-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+
+.notebook-card:hover {
+  border-color: #5c4ee5;
+  box-shadow: 0 10px 25px rgba(92, 78, 229, 0.06);
+  transform: translateY(-2px);
+}
+
+.notebook-card-icon {
+  width: 44px;
+  height: 44px;
+  background: #f5f3ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.notebook-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notebook-card-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notebook-card-count {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.notebook-card-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s, visibility 0.15s;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px;
+  border-radius: 6px;
+}
+
+.notebook-card:hover .notebook-card-actions {
+  opacity: 1;
+  visibility: visible;
+}
+
+.notebook-action-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: none;
+  background: #f3f4f6;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+
+.notebook-action-btn:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.notebook-action-btn--delete:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Edit State Styling */
+.notebook-edit-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.notebook-input-edit.form-control {
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  padding: 0 8px;
+  flex: 1;
+}
+
+.notebook-input-edit.form-control:focus {
+  border-color: #5c4ee5;
+  outline: none;
+}
+
+.notebook-edit-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.notebook-icon-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.notebook-save-btn {
+  background: #ede9fe;
+  color: #5c4ee5;
+}
+
+.notebook-save-btn:hover {
+  background: #5c4ee5;
+  color: #ffffff;
+}
+
+.notebook-cancel-btn {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.notebook-cancel-btn:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.notebooks-empty-state {
+  text-align: center;
+  padding: 40px;
+  background: #ffffff;
+  border: 1px dashed #e5e7eb;
+  border-radius: 12px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+@media (max-width: 639px) {
+  .notebook-create-form {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .notebooks-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .notebooks-header-row {
+    margin-bottom: 16px;
+  }
+}

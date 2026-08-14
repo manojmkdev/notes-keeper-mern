@@ -1,0 +1,148 @@
+.topbar {
+  height: 56px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: fixed;
+  top: 0;
+  left: 260px;
+  right: 0;
+  z-index: 99;
+  transition: left 0.25s ease-in-out;
+}
+
+.topbar-search-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 480px;
+}
+
+.topbar-search-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 38px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.topbar-search-box:focus-within {
+  background: #fff;
+  border-color: #5c4ee5;
+}
+
+.topbar-search-icon {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.topbar-search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: #374151;
+  outline: none;
+}
+
+.topbar-search-input::placeholder {
+  color: #9ca3af;
+}
+
+.topbar-clear-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.topbar-clear-btn:hover {
+  color: #374151;
+}
+
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-left: 16px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.12s;
+}
+
+.topbar-user:hover {
+  background: #f3f4f6;
+}
+
+.topbar-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.topbar-avatar {
+  width: 34px;
+  height: 34px;
+  background: #5c4ee5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sidebar Toggle button in Topbar */
+.topbar-toggle-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.topbar-toggle-btn:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+@media (max-width: 1023px) {
+  .topbar {
+    left: 0;
+  }
+  .topbar-toggle-btn {
+    display: flex;
+  }
+}
+
+@media (max-width: 639px) {
+  .topbar {
+    padding: 0 16px;
+  }
+  .topbar-username {
+    display: none;
+  }
+  .topbar-user {
+    padding: 4px;
+    margin-left: 8px;
+  }
+  .topbar-search-box {
+    padding: 0 10px;
+    gap: 6px;
+  }
+}

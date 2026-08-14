@@ -1,0 +1,107 @@
+.success-animation-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.verified-badge {
+  width: 84px;
+  height: 84px;
+  display: block;
+  margin: 0 auto 24px;
+  animation: badge-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.checkmark-check {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: draw-check 0.4s ease-out 0.4s forwards;
+}
+
+.success-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0095f6; /* Blue verified color */
+  margin-bottom: 8px;
+}
+
+.success-subtitle {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.resend-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.resend-btn {
+  background: none;
+  border: none;
+  color: #5c4ee5;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+
+.resend-btn:hover {
+  color: #4a3ecf;
+  text-decoration: underline;
+}
+
+.resend-btn:disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.otp-inputs {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.otp-digit {
+  width: 50px;
+  height: 54px;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fafafa;
+  color: #111827;
+  transition: border-color 0.15s;
+}
+
+.otp-digit:focus {
+  border-color: #5c4ee5;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(92, 78, 229, 0.1);
+  outline: none;
+}
+
+@keyframes badge-pop {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes draw-check {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
