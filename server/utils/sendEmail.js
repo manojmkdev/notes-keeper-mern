@@ -40,6 +40,9 @@ async function sendEmail({ to, subject, html, text }) {
       user,
       pass,
     },
+    connectionTimeout: 10000, // 10 seconds limit to connect
+    greetingTimeout: 10000,   // 10 seconds limit to hand-shake
+    socketTimeout: 10000,     // 10 seconds limit for socket activity
   });
 
   const mailOptions = {
