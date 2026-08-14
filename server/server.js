@@ -14,6 +14,9 @@ connectDB();
 
 const app = express();
 
+// Trust proxy for rate limiting (needed on hosting platforms like Render)
+app.set('trust proxy', 1);
+
 // Allow the configured frontend origin(s) to call this API
 const allowedOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:3000')
   .split(',')
