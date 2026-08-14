@@ -1,15 +1,12 @@
 const nodemailer = require('nodemailer');
 
 /**
- * Utility to send emails using nodemailer.
- * If SMTP configuration is missing, it logs the OTP/email to the console.
+ * Utility to send emails.
+ * Uses Resend API if RESEND_API_KEY is defined (bypasses SMTP port blocks).
+ * Otherwise falls back to SMTP / Nodemailer.
  */
 async function sendEmail({ to, subject, html, text }) {
-  const host = process.env.SMTP_HOST;
-  const port = process.env.SMTP_PORT || 587;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const from = process.env.EMAIL_FROM || 'Notes Keeper <noreply@noteskeeper.com>';
+  const resendKey = process.env.RESEND_API_KEY;
 
   // Always write to a local file in the project root to make it easy to find during dev/test
   const fs = require('fs');
@@ -20,6 +17,44 @@ async function sendEmail({ to, subject, html, text }) {
   } catch (writeErr) {
     console.error('Failed to write local otp.txt file:', writeErr.message);
   }
+
+  // 1. Try Resend HTTP API if configured (Highly Recommended for cloud hosting)
+  if (resendKey) {
+    try {
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${resendKey}`,
+        },
+        body: JSON.stringify({
+          from: process.env.EMAIL_FROM || 'Notes Keeper <onboarding@resend.dev>',
+          to: [to],
+          subject: subject,
+          html: html,
+          text: text,
+        }),
+      });
+
+      if (response.ok) {
+        console.log(`✉️  Email successfully sent to ${to} via Resend API`);
+        return;
+      } else {
+        const errorText = await response.text();
+        throw new Error(`Resend API responded with status ${response.status}: ${errorText}`);
+      }
+    } catch (apiError) {
+      console.error(`❌ Resend API failed:`, apiError.message);
+      // Fall through to SMTP fallback
+    }
+  }
+
+  // 2. Fallback to Nodemailer SMTP
+  const host = process.env.SMTP_HOST;
+  const port = process.env.SMTP_PORT || 587;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  const from = process.env.EMAIL_FROM || 'Notes Keeper <noreply@noteskeeper.com>';
 
   // Fallback to console logging if SMTP is not fully configured
   if (!host || !user || !pass) {
